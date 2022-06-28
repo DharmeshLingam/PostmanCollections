@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "df7710b3-6a61-443a-80b9-7a80ab116558",
+		"name": "Vertical Motion Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21573551"
+	},
+	"item": [
+		{
+			"name": "STARS",
+			"item": [
+				{
+					"name": "QA",
+					"item": [
+						{
+							"name": "Companies",
+							"item": [
+								{
+									"name": "GetCompanies",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompanies",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetCompanies"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompaniesPaginated",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompaniesPaginated?PageNumber=1&PageSize=10",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetCompaniesPaginated"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompaniesPaginatedFiltered",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompaniesPaginatedFiltered?PageNumber=1&PageSize=10&Name=Enbridge&Country=Can&PostalCode=T5J 2J9",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetCompaniesPaginatedFiltered"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10"
+												},
+												{
+													"key": "Name",
+													"value": "Enbridge"
+												},
+												{
+													"key": "Address1",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "BillingContact",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "City",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "Country",
+													"value": "Can"
+												},
+												{
+													"key": "Province",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "PostalCode",
+													"value": "T5J 2J9"
+												},
+												{
+													"key": "CreateBy",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompanyStatus",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-dev.azurewebsites.net/api/Company/GetStatuses",
+											"protocol": "https",
+											"host": [
+												"stars-dev",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetStatuses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreateCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Test name of the response\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"dharmesh\");\r",
+													"}\r",
+													"\r",
+													"var response=JSON.parse(responseBody);\r",
+													"pm.test(\"check Content-type header\", function()\r",
+													"{\r",
+													"    pm.response.to.be.header(\"Content-type\",\"application/json; charset=utf-8\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"name\": \"string\",\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"province\": \"string\",\r\n  \"isActive\": true,\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true,\r\n  \"createBy\": \"string\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"remoteIp\": \"string\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Companyid",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": 3023,\r\n  \"remoteIp\": \"string\",\r\n  \"isActive\": true,\r\n  \"name\": \"string\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"province\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/3023",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"3023"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get user login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"userTypeId\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"2\");\r",
+													"}\r",
+													"\r",
+													"var response=JSON.parse(responseBody);\r",
+													"pm.test(\"check Content-type header\", function()\r",
+													"{\r",
+													"    pm.response.to.be.header(\"Content-type\",\"application/json; charset=utf-8\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/User/Login?Username=user1&Password=123456",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"User",
+												"Login"
+											],
+											"query": [
+												{
+													"key": "Username",
+													"value": "user1"
+												},
+												{
+													"key": "Password",
+													"value": "123456"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User Types",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/User/GetUserTypes",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"User",
+												"GetUserTypes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "UpdateCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": 442,\r\n  \"remoteIp\": \"4545ds\",\r\n  \"isActive\": true,\r\n  \"name\": \"strffffffing\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"province\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true,\r\n  \"modifyDate\": \"2022-06-21T19:43:26.282Z\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/442?isActive=True&name=testjjj&parentCompanyId=0",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"442"
+											],
+											"query": [
+												{
+													"key": "isActive",
+													"value": "True"
+												},
+												{
+													"key": "name",
+													"value": "testjjj"
+												},
+												{
+													"key": "parentCompanyId",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Logging",
+							"item": [
+								{
+									"name": "GetLogs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"userName\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"userName\");\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\r\n  \"userName\": \"\",\r\n  \"type\": \"\",\r\n  \"dateFrom\": \"2022-06-20T16:13:07.919Z\",\r\n  \"dateTo\": \"2022-06-22T16:13:07.919Z\",\r\n  \"remoteIP\": \"\",\r\n  \"comment\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Logging",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Logging"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
