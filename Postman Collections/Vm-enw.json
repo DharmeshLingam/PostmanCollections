@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "1eb695bf-c237-40e7-805a-64fb6af5132b",
+		"name": "Vertical Motion Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "STARS",
+			"item": [
+				{
+					"name": "QA",
+					"item": [
+						{
+							"name": "Companies",
+							"item": [
+								{
+									"name": "GetCompanies",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "61fd40ea-7052-472a-8e78-fb033288cc98",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"_postman_id": "cc304398-b01a-4069-ae5d-afada60dff16",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompanies"
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompaniesPaginated",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "018d654d-9ec0-4d8f-a176-ea049fe91a6f"
+											}
+										}
+									],
+									"_postman_id": "a1dff853-2bd0-46e8-ab59-24ecceeb6a43",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompaniesPaginated?PageNumber=1&PageSize=10",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetCompaniesPaginated"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompaniesPaginatedFiltered",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "134cde6b-74aa-4989-8269-495caf7978ca"
+											}
+										}
+									],
+									"_postman_id": "e698db3f-49d2-4703-ac08-0541313e1c48",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/GetCompaniesPaginatedFiltered?PageNumber=1&PageSize=10&Name=Enbridge&Country=Can&PostalCode=T5J 2J9",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"GetCompaniesPaginatedFiltered"
+											],
+											"query": [
+												{
+													"key": "PageNumber",
+													"value": "1"
+												},
+												{
+													"key": "PageSize",
+													"value": "10"
+												},
+												{
+													"key": "Name",
+													"value": "Enbridge"
+												},
+												{
+													"key": "Address1",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "BillingContact",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "City",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "Country",
+													"value": "Can"
+												},
+												{
+													"key": "Province",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "PostalCode",
+													"value": "T5J 2J9"
+												},
+												{
+													"key": "CreateBy",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCompanyStatus",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;"
+												],
+												"type": "text/javascript",
+												"id": "e6b621a3-6314-48e6-9773-b8bc6c385517"
+											}
+										}
+									],
+									"_postman_id": "83173ee1-0501-4a2a-bed5-22baf5a5b9bb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "https://stars-dev.azurewebsites.net/api/Company/GetStatuses"
+									},
+									"response": []
+								},
+								{
+									"name": "CreateCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"Test name of the response\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"dharmesh\");\r",
+													"}\r",
+													"\r",
+													"var response=JSON.parse(responseBody);\r",
+													"pm.test(\"check Content-type header\", function()\r",
+													"{\r",
+													"    pm.response.to.be.header(\"Content-type\",\"application/json; charset=utf-8\");\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "1bbb59e2-d08f-4f56-b275-06d602a8566d"
+											}
+										}
+									],
+									"_postman_id": "febc1050-8d64-400e-995e-381407afe441",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"name\": \"string\",\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"province\": \"string\",\r\n  \"isActive\": true,\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true,\r\n  \"createBy\": \"string\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"remoteIp\": \"string\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://stars-api-qa.azurewebsites.net/api/Company"
+									},
+									"response": []
+								},
+								{
+									"name": "Companyid",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "419ce1df-84ed-4a37-9d4d-2c46d52929f4"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;"
+												],
+												"type": "text/javascript",
+												"id": "f33c3d5d-971a-404f-9ac3-95ce76f95f88"
+											}
+										}
+									],
+									"_postman_id": "88feccd8-9b67-41dd-af74-3ae7889e5e9e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": 3023,\r\n  \"remoteIp\": \"string\",\r\n  \"isActive\": true,\r\n  \"name\": \"string\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"province\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://stars-api-qa.azurewebsites.net/api/Company/3023"
+									},
+									"response": []
+								},
+								{
+									"name": "Get user login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"userTypeId\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"2\");\r",
+													"}\r",
+													"\r",
+													"var response=JSON.parse(responseBody);\r",
+													"pm.test(\"check Content-type header\", function()\r",
+													"{\r",
+													"    pm.response.to.be.header(\"Content-type\",\"application/json; charset=utf-8\");\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "b3baf8cb-0af5-4b8e-8061-7df8c0f9f10b"
+											}
+										}
+									],
+									"_postman_id": "f6fbd2e2-19e8-4c7f-ac85-dcbc67e340d2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/User/Login?Username=user1&Password=123456",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"User",
+												"Login"
+											],
+											"query": [
+												{
+													"key": "Username",
+													"value": "user1"
+												},
+												{
+													"key": "Password",
+													"value": "123456"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User Types",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"pm.test(\"Content-Type is present\", function () {\r",
+													"    pm.response.to.have.header(\"Content-Type\",\"application/json; charset=utf-8\" );\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "d0d5a723-4e00-4c2f-9fb0-1c98b5fba467"
+											}
+										}
+									],
+									"_postman_id": "44e3e755-9171-4e05-9af4-2e6a2a6993ad",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "https://stars-api-qa.azurewebsites.net/api/User/GetUserTypes"
+									},
+									"response": []
+								},
+								{
+									"name": "UpdateCompany",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript",
+												"id": "59f9e078-19ce-4e7c-b66b-67eb9562b71a"
+											}
+										}
+									],
+									"_postman_id": "f3fa7138-2f66-4502-b93c-88e43b64ff5c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": 442,\r\n  \"remoteIp\": \"4545ds\",\r\n  \"isActive\": true,\r\n  \"name\": \"strffffffing\",\r\n  \"parentCompanyId\": 0,\r\n  \"statusId\": 0,\r\n  \"address1\": \"string\",\r\n  \"billingContact\": \"string\",\r\n  \"city\": \"string\",\r\n  \"country\": \"string\",\r\n  \"province\": \"string\",\r\n  \"postalCode\": \"string\",\r\n  \"requiresAFE\": true,\r\n  \"requiresAllocation\": true,\r\n  \"modifyDate\": \"2022-06-21T19:43:26.282Z\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stars-api-qa.azurewebsites.net/api/Company/442?isActive=True&name=testjjj&parentCompanyId=0",
+											"protocol": "https",
+											"host": [
+												"stars-api-qa",
+												"azurewebsites",
+												"net"
+											],
+											"path": [
+												"api",
+												"Company",
+												"442"
+											],
+											"query": [
+												{
+													"key": "isActive",
+													"value": "True"
+												},
+												{
+													"key": "name",
+													"value": "testjjj"
+												},
+												{
+													"key": "parentCompanyId",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_id": "d4bd9928-14f0-4825-8a84-146643009867",
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Logging",
+							"item": [
+								{
+									"name": "GetLogs",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"tests [\"Validating status code\"] = responseCode.code == 200;\r",
+													"const jsonData = pm.response.json();\r",
+													"pm.test(\"userName\"),()=>{\r",
+													"    pm.expect(jsonData).to.be.an(\"userName\");\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript",
+												"id": "c66b8920-032b-4e6b-9c02-9eecaebb4021"
+											}
+										}
+									],
+									"_postman_id": "4a5293d4-b47d-484b-9deb-120cd3b18d34",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\r\n  \"userName\": \"\",\r\n  \"type\": \"\",\r\n  \"dateFrom\": \"2022-06-20T16:13:07.919Z\",\r\n  \"dateTo\": \"2022-06-22T16:13:07.919Z\",\r\n  \"remoteIP\": \"\",\r\n  \"comment\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://stars-api-qa.azurewebsites.net/api/Logging"
+									},
+									"response": []
+								}
+							],
+							"_postman_id": "e5028921-6822-473c-ac24-dfded8cbc7f6",
+							"_postman_isSubFolder": true
+						}
+					],
+					"_postman_id": "90266bdf-39a5-4610-999d-2085a5100c46",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "cdda392d-8c94-4975-b98d-145dfd76562b"
+		}
+	]
+}
